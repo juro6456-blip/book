@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Редактор книги</title>
+        <link rel="stylesheet" href="/styles.css" />
+    </head>
+    <body class="admin-body">
+        <main class="admin-shell">
+            <header class="admin-top">
+                <div>
+                    <p class="kicker">Мастерская рукописи</p>
+                    <h1>Редактор книги</h1>
+                    <p class="admin-lede">Собирайте главы, настраивайте настроение текста и сразу публикуйте изменения в читателе.</p>
+                </div>
+                <div class="admin-actions">
+                    <a class="ghost-link" href="/" target="_blank" rel="noreferrer">Открыть книгу</a>
+                    <button id="saveBtn" class="primary-btn" type="button">Сохранить</button>
+                </div>
+            </header>
+
+            <section class="admin-grid">
+                <aside class="editor-panel book-settings">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="panel-kicker">Книга</p>
+                            <h2>Обложка и стиль</h2>
+                        </div>
+                        <span id="saveStatus" class="save-status is-idle">Готово</span>
+                    </div>
+
+                    <div class="field-row">
+                        <label>Название<input id="titleInput" type="text" autocomplete="off" /></label>
+                        <label>Автор<input id="authorInput" type="text" autocomplete="off" /></label>
+                    </div>
+                    <label>Подзаголовок<input id="subtitleInput" type="text" autocomplete="off" /></label>
+                    <label>Заметка на обложке<textarea id="coverNoteInput" rows="3"></textarea></label>
+
+                    <div class="field-row">
+                        <label>
+                            Тема
+                            <select id="themeInput">
+                                <option value="classic">Светлая медь</option>
+                                <option value="noir">Ночной архив</option>
+                                <option value="forest">Лесная полка</option>
+                                <option value="royal">Фиолетовая печать</option>
+                            </select>
+                        </label>
+                        <label>
+                            Бумага
+                            <select id="paperInput">
+                                <option value="warm">Теплая</option>
+                                <option value="white">Белая</option>
+                                <option value="sepia">Сепия</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="control-strip">
+                        <label class="check-row"><input id="dropCapInput" type="checkbox" /> Буквица в начале главы</label>
+                        <label>Размер текста <span id="fontSizeValue" class="range-value"></span><input id="fontSizeInput" type="range" min="14" max="28" step="1" /></label>
+                        <label>Интерлиньяж <span id="lineHeightValue" class="range-value"></span><input id="lineHeightInput" type="range" min="1.35" max="2.2" step="0.05" /></label>
+                        <label>Ширина страницы <span id="pageWidthValue" class="range-value"></span><input id="pageWidthInput" type="range" min="680" max="1120" step="20" /></label>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div><span>Глав</span><strong id="chapterCount">0</strong></div>
+                        <div><span>Слов</span><strong id="wordCount">0</strong></div>
+                        <div><span>Знаков</span><strong id="charCount">0</strong></div>
+                    </div>
+
+                    <div class="chapter-tools">
+                        <h2>Главы</h2>
+                        <button id="addChapterBtn" type="button">+ Глава</button>
+                    </div>
+                    <label class="search-label">Поиск по главам<input id="chapterSearchInput" type="search" placeholder="Название, фраза или заметка" /></label>
+                    <div id="chapterList" class="chapter-list" aria-label="Список глав"></div>
+                </aside>
+
+                <section class="editor-panel chapter-editor">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="panel-kicker">Текущая глава</p>
+                            <h2 id="chapterEditorTitle">Текст</h2>
+                        </div>
+                        <div class="editor-tools" aria-label="Действия с главой">
+                            <button id="moveUpBtn" class="tool-btn" type="button" title="Поднять главу">↑</button>
+                            <button id="moveDownBtn" class="tool-btn" type="button" title="Опустить главу">↓</button>
+                            <button id="duplicateChapterBtn" class="tool-btn" type="button">Дублировать</button>
+                            <button id="deleteChapterBtn" class="danger-btn" type="button">Удалить</button>
+                        </div>
+                    </div>
+
+                    <div class="field-row">
+                        <label>Заголовок главы<input id="chapterTitleInput" type="text" autocomplete="off" /></label>
+                        <label>Эпиграф<input id="chapterEpigraphInput" type="text" autocomplete="off" /></label>
+                    </div>
+
+                    <label class="body-label">
+                        Текст главы
+                        <textarea id="chapterBodyInput" rows="22" spellcheck="true"></textarea>
+                    </label>
+                    <label>Заметка автора<textarea id="chapterNoteInput" rows="4"></textarea></label>
+
+                    <div class="chapter-meta">
+                        <span id="currentChapterStats">0 слов</span>
+                        <span id="autosaveHint">Автосохранение включено</span>
+                    </div>
+
+                    <section class="preview-panel" aria-label="Предпросмотр главы">
+                        <div class="preview-heading">
+                            <p class="panel-kicker">Предпросмотр</p>
+                            <strong id="previewTitle">Глава</strong>
+                        </div>
+                        <div id="chapterPreview" class="chapter-preview"></div>
+                    </section>
+                </section>
+            </section>
+        </main>
+        <script src="/admin.js"></script>
+    </body>
+</html>

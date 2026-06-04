@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Книга</title>
+        <link rel="stylesheet" href="/styles.css" />
+    </head>
+    <body class="reader-page">
+        <main class="simple-reader" aria-label="Книга">
+            <div class="reader-minibar" aria-label="Навигация книги">
+                <a class="mini-link" href="/admin">Редактор</a>
+                <span id="readerSyncStatus" class="reader-sync">Живая рукопись</span>
+            </div>
+
+            <div id="bookContent" class="book-content"></div>
+
+            <div class="reader-controls">
+                <button id="prevBtn" class="control-btn" type="button" aria-label="Предыдущая страница">← Назад</button>
+                <div class="page-selector">
+                    <select id="pageSelect" class="page-select" aria-label="Выбрать страницу"></select>
+                </div>
+                <button id="nextBtn" class="control-btn" type="button" aria-label="Следующая страница">Вперед →</button>
+            </div>
+        </main>
+
+        <script src="/reader.js"></script>
+    </body>
+</html>
